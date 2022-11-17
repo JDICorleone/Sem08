@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sem08.R
+import com.example.sem08.adapter.LugarAdapter
 import com.example.sem08.databinding.FragmentHomeBinding
 import com.example.sem08.viewmodel.HomeViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -34,10 +36,19 @@ class HomeFragment : Fragment() {
         binding.appBarPrincipal.fab.setOnClickListener { view ->
             findNavController().navigate(R.id.action_nav_home_to_addLugar)
         }
-    }   return
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        //Cargar datos
+        val lugarAdapter: LugarAdapter = LugarAdapter()
+        val reciclador = binding.reciclador
+        reciclador.adapter = lugarAdapter
+        reciclador.layoutManager = LinearLayoutManager(requireContext())
+
+        homeViewModel.getLugares.observe(viewLifecycleOwner) { lugares ->
+            lugarAdapter.setLugares(lugares)
+        }
+
+        override fun onDestroyView() {
+            super.onDestroyView()
+            _binding = null
+        }
     }
-}

@@ -34,5 +34,20 @@
         <action
             android:id="@+id/action_addLugar_to_nav_home"
             app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_addLugar_to_updateLugarFragment"
+            app:destination="@id/updateLugarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateLugarFragment"
+        android:name="com.example.sem08.updateLugarFragment"
+        android:label="fragment_update_lugar"
+        tools:layout="@layout/fragment_update_lugar" >
+        <action
+            android:id="@+id/action_updateLugarFragment_to_addLugar"
+            app:destination="@id/addLugar" />
+        <argument
+            android:name="lugar"
+            app:argType="com.example.sem08.model.Lugar" />
     </fragment>
 </navigation>
