@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_nav_home_to_addLugar)
         }
 
-        //Cargar datos
+        //Cargar Datos
         val lugarAdapter: LugarAdapter = LugarAdapter()
         val reciclador = binding.reciclador
         reciclador.adapter = lugarAdapter
