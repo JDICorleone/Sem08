@@ -15,17 +15,15 @@
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="msg_data" />
-    <string name="msg_lugar_updated" />
 
-    <String name="msg_nombre">Nombre del Lugar</String>
-    <String name="msg_email">Email</String>
-    <String name="msg_telefono">Telefono</String>
-    <String name="msg_web">Web</String>
-    <String name="bt_agregar_lugar">Agregar Lugar</String>
-    <String name="bt_update_lugar">Actualizar Lugar</String>
-    <String name="msg_lugar_added">Lugar agregado</String>
-    <String name="msg_lugar_updated">Lugar actualizado...</String>
-    <String name="msg_data">Agregar Error</String>
+    <string name="msg_nombre">Nombre del Lugar</string>
+    <string name="msg_email">Email</string>
+    <string name="msg_telefono">Telefono</string>
+    <string name="msg_web">Web</string>
+    <string name="bt_agregar_lugar">Agregar Lugar</string>
+    <string name="bt_update_lugar">Actualizar Lugar</string>
+    <string name="msg_lugar_added">Lugar agregado</string>
+    <string name="msg_lugar_updated">Lugar actualizado...</string>
+    <string name="msg_data">Agregar Error</string>
 
 </resources>
