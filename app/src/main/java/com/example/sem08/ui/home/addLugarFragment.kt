@@ -13,10 +13,10 @@ import com.example.sem08.viewmodel.HomeViewModel
 
 /**
  * A simple [Fragment] subclass.
- * Use the [AddLugar.newInstance] factory method to
+ * Use the [addLugarFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class AddLugar : Fragment() {
+class addLugarFragment : Fragment() {
     private var _binding: FragmentAddLugarBinding? = null
     private val binding get() = _binding!!
     private lateinit var lugarViewModel: HomeViewModel
@@ -64,7 +64,7 @@ class AddLugar : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            AddLugar().apply {
+            addLugarFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

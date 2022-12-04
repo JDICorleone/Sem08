@@ -1,5 +1,6 @@
 package com.example.sem08.data
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import com.example.sem08.model.Lugar
@@ -8,23 +9,93 @@ import androidx.room.Query
 import androidx.room.OnConflictStrategy
 import androidx.room.Update
 import androidx.room.Delete
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreSettings
+import com.google.firebase.ktx.Firebase
 
-@Dao
-interface LugarDao {
-    //Obtener datos
-    @Query("SELECT * FROM lugar")
-    fun obtenerLugares() : LiveData<List<Lugar>>
+class LugarDao {
+    //FireBase Var
+    private var codigoUsuario: String
+    private var firestore:FirebaseFirestore
 
-    //Insert
-    @Insert( onConflict = OnConflictStrategy.IGNORE)
-    suspend fun agregarLugar(lugar: Lugar)
+    init {
+        val usuario = Firebase.auth.currentUser?.email
+        codigoUsuario = "$usuario"
+        firestore = FirebaseFirestore.getInstance()
+        firestore.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
+    }
 
-    //Update
-    @Update( onConflict = OnConflictStrategy.IGNORE)
-    suspend fun modificarLugar(lugar: Lugar)
+    //CRUD Create Read Update Delete
+    fun saveLugar(lugar: Lugar){
+        val document: DocumentReference
+        if(lugar.id.isEmpty()){
+            //Agregar
+            document = firestore.
+            collection("lugaresMiercoles").
+            document(codigoUsuario).
+            collection("misLugares").
+            document()
+            lugar.id = document.id
+        }
+        else{
+            //Modificar
+            document = firestore.
+            collection("lugaresMiercoles").
+            document(codigoUsuario).
+            collection("misLugares").
+            document(lugar.id)
+        }
+        document.set(lugar)
+            .addOnCompleteListener {
+                Log.d("SaveLugar","Guardado con exito")
+            }
+            .addOnCanceledListener {
+                Log.e("SaveLugar","Error al guardar")
+            }
+    }
 
-    //Delete
-    @Delete
-    suspend fun eliminarLugar(lugar: Lugar)
+    fun deleteLugar(lugar: Lugar){
+        if(lugar.id.isNotEmpty()){
+            firestore.
+            collection("lugaresMiercoles").
+            document(codigoUsuario).
+            collection("misLugares").
+            document(lugar.id).
+            delete()
+                .addOnCompleteListener {
+                    Log.d("deleteLugar","Eliminado con exito")
+                }
+                .addOnCanceledListener {
+                    Log.e("deleteLugar","Error al eliminar")
+                }
+        }
 
+    }
+
+    fun getLugares() : MutableLiveData<List<Lugar>> {
+        val listaLugares = MutableLiveData<List<Lugar>>()
+        firestore.
+        collection("lugaresMiercoles").
+        document(codigoUsuario).
+        collection("misLugares").
+        addSnapshotListener{snapshot, e ->
+            if(e != null){
+                return@addSnapshotListener
+            }
+            if(snapshot != null){
+                val lista = ArrayList<Lugar>()
+                val lugares = snapshot.documents
+                lugares.forEach{
+                    val lugar = it.toObject(Lugar ::class.java)
+                    if(lugar != null){
+                        lista.add(lugar)
+                    }
+                }
+                listaLugares.value = lista
+            }
+        }
+        return listaLugares
+    }
 }

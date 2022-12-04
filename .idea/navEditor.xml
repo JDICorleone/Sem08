@@ -13,23 +13,9 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="218" />
-                            <option name="y" value="24" />
+                            <option name="x" value="240" />
+                            <option name="y" value="16" />
                           </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_addLugar_to_nav_home">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_addLugar_to_updateLugarFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -51,8 +37,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="406" />
-                            <option name="y" value="27" />
+                            <option name="x" value="48" />
+                            <option name="y" value="13" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -72,8 +58,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="51" />
-                            <option name="y" value="15" />
+                            <option name="x" value="-132" />
+                            <option name="y" value="335" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -84,18 +70,9 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="387" />
-                            <option name="y" value="415" />
+                            <option name="x" value="63" />
+                            <option name="y" value="338" />
                           </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_updateLugarFragment_to_addLugar">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

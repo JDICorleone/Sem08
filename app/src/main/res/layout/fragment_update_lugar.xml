@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AddLugar">
+    tools:context=".ui.home.UpdateLugarFragment">
 
     <EditText
         android:id="@+id/et_Nombre"
@@ -36,7 +36,7 @@
         android:inputType="textPersonName"
         android:padding="20dp"
         android:text="Telefono"
-        android:textAlignment="center" />
+        android:textAlignment="textStart" />
 
     <EditText
         android:id="@+id/et_web"
@@ -46,12 +46,12 @@
         android:inputType="textPersonName"
         android:padding="20dp"
         android:text="Web"
-        android:textAlignment="center" />
+        android:textAlignment="textStart" />
 
     <Button
-        android:id="@+id/bt_agregar_lugar"
+        android:id="@+id/bt_update_lugar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
         android:text="Actualizar Lugar" />
-</LinearLayou
+</LinearLayout>

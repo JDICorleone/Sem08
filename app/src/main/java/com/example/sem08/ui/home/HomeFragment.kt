@@ -33,12 +33,12 @@ class HomeFragment : Fragment() {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        binding.appBarPrincipal.fab.setOnClickListener { view ->
+        binding.appBarPrincipal.fab.setOnClickListener {
             findNavController().navigate(R.id.action_nav_home_to_addLugar)
         }
 
         //Cargar Datos
-        val lugarAdapter: LugarAdapter = LugarAdapter()
+        val lugarAdapter = LugarAdapter()
         val reciclador = binding.reciclador
         reciclador.adapter = lugarAdapter
         reciclador.layoutManager = LinearLayoutManager(requireContext())
@@ -46,6 +46,8 @@ class HomeFragment : Fragment() {
         homeViewModel.getLugares.observe(viewLifecycleOwner) { lugares ->
             lugarAdapter.setLugares(lugares)
         }
+        return binding.root
+    }
 
         override fun onDestroyView() {
             super.onDestroyView()

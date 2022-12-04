@@ -8,13 +8,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.sem08.R
 import com.example.sem08.databinding.FragmentUpdateLugarBinding
 import com.example.sem08.model.Lugar
 import com.example.sem08.viewmodel.HomeViewModel
 
 
-class updateLugarFragment : Fragment() {
+class UpdateLugarFragment : Fragment() {
 
     //Recupera Argumentos
     private val args by navArgs<UpdateLugarFragmentArgs>()
@@ -62,7 +63,7 @@ class updateLugarFragment : Fragment() {
         else{
             val lugar = Lugar(args.lugar.id,nombre,correo,web,telefono)
             homeViewModel.saveLugar(lugar)
-            Toast.makeText(requireContext(),getString(R.string.msg_lugar_updated),toast.LENGHT_LONG).show()
+            Toast.makeText(requireContext(),getString(R.string.msg_lugar_updated),Toast.LENGHT_LONG).show()
             findNavController().navigate(R.id.action_updateLugarFragment_to_nav_home)
 
         }
